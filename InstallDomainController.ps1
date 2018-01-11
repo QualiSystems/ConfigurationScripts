@@ -1,0 +1,3 @@
+install-windowsfeature AD-Domain-Services
+Import-Module ADDSDeployment -IncludeManagementTools
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012" -DomainName $env:DomainName -DomainNetbiosName $env:DomainBios -SafeModeAdministratorPassword (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force) -ForestMode "Win2012" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$true -SysvolPath "C:\Windows\SYSVOL" -Force:$true -Confirm:$false 
